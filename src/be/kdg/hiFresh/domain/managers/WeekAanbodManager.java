@@ -1,5 +1,7 @@
 package be.kdg.hiFresh.domain.managers;
 
+//test comment
+
 import be.kdg.hiFresh.domain.recept.Week;
 import be.kdg.hiFresh.domain.recept.WeekAanbod;
 import be.kdg.hiFresh.persistentie.WeekAanbodMemoryRepo;
