@@ -1,4 +1,5 @@
 package be.kdg.hiFresh.domain.managers;
+//test2
 
 import be.kdg.hiFresh.domain.recept.Week;
 import be.kdg.hiFresh.domain.recept.WeekAanbod;
