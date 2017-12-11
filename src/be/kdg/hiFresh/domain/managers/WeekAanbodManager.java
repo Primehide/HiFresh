@@ -3,6 +3,8 @@ package be.kdg.hiFresh.domain.managers;
 import be.kdg.hiFresh.domain.recept.Week;
 import be.kdg.hiFresh.domain.recept.WeekAanbod;
 import be.kdg.hiFresh.persistentie.WeekAanbodMemoryRepo;
+import org.threeten.extra.YearWeek;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,11 +15,12 @@ public class WeekAanbodManager {
         repo = new WeekAanbodMemoryRepo();
     }
 
-    public List<WeekAanbod> getLijstWeekAanbod(Week week){
+    public List<WeekAanbod> getLijstWeekAanbod(){
         //TODO weekaanbiedingen van 2 weken ophalen (huidige en de week erna);
         List<WeekAanbod> aankomendeAanbiedingen = new LinkedList<WeekAanbod>();
+        Week huidigeWeek = new Week(YearWeek.now().getYear(),YearWeek.now().getWeek());
         for (WeekAanbod wa : repo.getAlleAanbiedingen()){
-            if(wa.getWeek()== week || wa.getWeek().getIntWeek() == week.getIntWeek() + 1){
+            if((wa.getWeek()== huidigeWeek) || (wa.getWeek().getIntWeek() == huidigeWeek.getIntWeek() + 1)){
                 aankomendeAanbiedingen.add(wa);
             }
         }

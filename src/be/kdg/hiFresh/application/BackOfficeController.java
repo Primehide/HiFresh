@@ -26,8 +26,7 @@ public class BackOfficeController {
 
 	public List<WeekAanbod> getLijstWeekaanbod() {
 		// TODO
-		Week huidigeWeek = new Week(YearWeek.now().getYear(),YearWeek.now().getWeek());
-		return weekAanbodManager.getLijstWeekAanbod(huidigeWeek);
+		return weekAanbodManager.getLijstWeekAanbod();
 	}
 
 	public Map<Recept, Double> zoekRecepten(
