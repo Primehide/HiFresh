@@ -16,7 +16,6 @@ public class WeekAanbodManager {
     }
 
     public List<WeekAanbod> getLijstWeekAanbod(){
-        //TODO weekaanbiedingen van 2 weken ophalen (huidige en de week erna);
         List<WeekAanbod> aankomendeAanbiedingen = new LinkedList<WeekAanbod>();
         Week huidigeWeek = new Week(YearWeek.now().getYear(),YearWeek.now().getWeek());
         for (WeekAanbod wa : repo.getAlleAanbiedingen()){
