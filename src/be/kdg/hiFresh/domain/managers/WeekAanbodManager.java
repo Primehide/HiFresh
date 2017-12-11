@@ -20,7 +20,7 @@ public class WeekAanbodManager {
         List<WeekAanbod> aankomendeAanbiedingen = new LinkedList<WeekAanbod>();
         Week huidigeWeek = new Week(YearWeek.now().getYear(),YearWeek.now().getWeek());
         for (WeekAanbod wa : repo.getAlleAanbiedingen()){
-            if((wa.getWeek()== huidigeWeek) || (wa.getWeek().getIntWeek() == huidigeWeek.getIntWeek() + 1)){
+            if(wa.getWeek().getIntWeek() == huidigeWeek.getIntWeek() || wa.getWeek().getIntWeek() == huidigeWeek.getIntWeek() + 1){
                 aankomendeAanbiedingen.add(wa);
             }
         }

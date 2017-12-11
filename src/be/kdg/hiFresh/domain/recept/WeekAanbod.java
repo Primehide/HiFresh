@@ -13,7 +13,7 @@ import java.util.*;
 
 public class WeekAanbod {
 	// TODO: implementeer klasse
-	private List<Recept> recepten;
+	private	Map<Integer,Recept> mapRecepten;
 	private Week week;
 	private double verkoopPrijsPerPersoon;
 
@@ -23,7 +23,7 @@ public class WeekAanbod {
 	  // TODO
 	  verkoopPrijsPerPersoon = prijs;
 	  week = new Week(yearWeek.getYear(),yearWeek.getWeek());
-	  recepten = new LinkedList<Recept>();
+	  mapRecepten = new HashMap<Integer, Recept>();
   }
 
   public Week getWeek(){
@@ -40,12 +40,14 @@ public class WeekAanbod {
 	 * wordt dit gereturned, anders returns null
 	 */
 	public Recept voegToe(Recept recept,int plaats){
-		recepten.add(recept);
+		//TODO moet nog rekening houden met het verplaatsen van recepten.
+		// Max is 10 per aanbod dus als er 1 bijkomt moet alles verplaatsen.Indien er dan meer dan 10 zijn geeft je het recept terug dat afvalt.
+		mapRecepten.putIfAbsent(plaats,recept);
 		return recept;
 	}
 
 
 	public  Map<Integer,Recept>  getRecepten() {
-		return null;
+		return mapRecepten;
 	}
 }

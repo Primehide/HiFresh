@@ -42,13 +42,12 @@ public class BackOfficeControllerTest {
 		// 2. Producten worden opgesteld en aan contractperiodes gekoppeld.
 		// 3. Met behulp van de aangemaakte producten worden recepten opgesteld.
 		// 4. Weekaanboden worden aangemaakt	}
-		ctrl.VoegTestWeekAanbiedingenToe(data.getPlanning());
+		ctrl.VoegTestWeekAanbiedingenToe(data.getPlanning()); //voegt testdata toe aan de WeekAanbod Repository
 
 	}
 
 	@Test
 	public void getLijstWeekaanbod() throws Exception {
-		// TODO: zorg ervoor dat in BackOfficeController::getLijstWeekaanbod() default een lijst van 2 weken wordt teruggegeven
 		List<WeekAanbod> aanbodLijst = ctrl.getLijstWeekaanbod();
 		assertEquals("Default wordt het aanbod van 2 weken teruggegeven", 2, aanbodLijst.size());
 		assertEquals(WeekAanbod.SIZE, aanbodLijst.get(0).getRecepten().size());

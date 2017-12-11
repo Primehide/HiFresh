@@ -25,7 +25,6 @@ public class BackOfficeController {
 
 
 	public List<WeekAanbod> getLijstWeekaanbod() {
-		// TODO
 		return weekAanbodManager.getLijstWeekAanbod();
 	}
 

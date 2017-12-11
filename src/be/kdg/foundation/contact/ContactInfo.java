@@ -8,7 +8,6 @@ import java.util.logging.Logger;
  * @author Jan de Rijke.
  */
 public class ContactInfo {
-	// TODO: implementeer klasse
 	private String email;
 	private String[] telefoon;
 	private Adres adres;
