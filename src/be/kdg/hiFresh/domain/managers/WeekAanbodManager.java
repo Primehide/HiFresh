@@ -1,6 +1,8 @@
 package be.kdg.hiFresh.domain.managers;
 //test2
 
+//test comment
+
 import be.kdg.hiFresh.domain.recept.Week;
 import be.kdg.hiFresh.domain.recept.WeekAanbod;
 import be.kdg.hiFresh.persistentie.WeekAanbodMemoryRepo;
@@ -17,7 +19,6 @@ public class WeekAanbodManager {
     }
 
     public List<WeekAanbod> getLijstWeekAanbod(){
-        //test2
         List<WeekAanbod> aankomendeAanbiedingen = new LinkedList<WeekAanbod>();
         Week huidigeWeek = new Week(YearWeek.now().getYear(),YearWeek.now().getWeek());
         for (WeekAanbod wa : repo.getAlleAanbiedingen()){
