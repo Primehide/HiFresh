@@ -3,11 +3,13 @@ package be.kdg.hiFresh.application;
 
 import be.kdg.foundation.operatie.Operatie;
 import be.kdg.foundation.operatie.Sort;
+import be.kdg.hiFresh.domain.leverancier.Contract;
+import be.kdg.hiFresh.domain.leverancier.ContractPeriode;
+import be.kdg.hiFresh.domain.managers.ContractManager;
 import be.kdg.hiFresh.domain.managers.WeekAanbodManager;
 import be.kdg.hiFresh.domain.recept.*;
 import org.threeten.extra.YearWeek;
 
-import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -18,6 +20,7 @@ public class BackOfficeController {
 
 	private static int WEEK_PAGE_SIZE = 2; 	// Constante die vastlegt hoeveel weken weekaanbod wordt teruggegeven.
 	private WeekAanbodManager weekAanbodManager;
+	private ContractManager contractManager;
 
 
 	public BackOfficeController() {
@@ -35,11 +38,24 @@ public class BackOfficeController {
 		List<Sort> sorter
 	) {
 		// TODO
-		return null; //placeholder om compileerbaar te maken
+        Map<Recept, Double> res = new HashMap<Recept, Double>();
+        List<WeekAanbod> weekAanbods = weekAanbodManager.getLijstWeekAanbod(new Week(jaar, week),WEEK_PAGE_SIZE);
+        for (WeekAanbod w : weekAanbods){
+            Map<Integer, Recept> recepten = w.getRecepten();
+            for (int i : recepten.keySet()){
+                Recept r = recepten.get(i);
+                r.berekenGemPrijs(new Week(jaar, week));
+            }
+        }
+		return res; //placeholder om compileerbaar te maken
 	}
 
 	public void VoegTestWeekAanbiedingenToe(List<WeekAanbod> planning){
 		weekAanbodManager.VoegTestWeekAanbiedingenToe(planning);
 	}
+
+	public void VoegTestContractsToe(List<Contract> planning){
+	    contractManager.fillRepo(planning);
+    }
 
 }

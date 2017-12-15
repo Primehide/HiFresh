@@ -29,5 +29,7 @@ public class Contract {
 		periodes.add(periode);
 	}
 
-
+	public List<ContractPeriode> getPeriodes() {
+		return periodes;
+	}
 }

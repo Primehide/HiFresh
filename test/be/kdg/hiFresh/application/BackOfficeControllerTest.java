@@ -43,7 +43,7 @@ public class BackOfficeControllerTest {
 		// 3. Met behulp van de aangemaakte producten worden recepten opgesteld.
 		// 4. Weekaanboden worden aangemaakt	}
 		ctrl.VoegTestWeekAanbiedingenToe(data.getPlanning()); //voegt testdata toe aan de WeekAanbod Repository
-
+		ctrl.VoegTestContractsToe(data.getContracten());
 	}
 
 	@Test
