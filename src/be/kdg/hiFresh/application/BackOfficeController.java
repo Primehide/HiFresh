@@ -7,6 +7,7 @@ import be.kdg.hiFresh.domain.managers.WeekAanbodManager;
 import be.kdg.hiFresh.domain.recept.*;
 import org.threeten.extra.YearWeek;
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -25,7 +26,7 @@ public class BackOfficeController {
 
 
 	public List<WeekAanbod> getLijstWeekaanbod() {
-		return weekAanbodManager.getLijstWeekAanbod();
+		return weekAanbodManager.getLijstWeekAanbod(new Week(YearWeek.now().getYear(),YearWeek.now().getWeek()),WEEK_PAGE_SIZE);
 	}
 
 	public Map<Recept, Double> zoekRecepten(

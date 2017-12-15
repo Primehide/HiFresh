@@ -15,12 +15,13 @@ public class WeekAanbodManager {
         repo = new WeekAanbodMemoryRepo();
     }
 
-    public List<WeekAanbod> getLijstWeekAanbod(){
+    public List<WeekAanbod> getLijstWeekAanbod(Week week, int size){
         List<WeekAanbod> aankomendeAanbiedingen = new LinkedList<WeekAanbod>();
-        Week huidigeWeek = new Week(YearWeek.now().getYear(),YearWeek.now().getWeek());
         for (WeekAanbod wa : repo.getAlleAanbiedingen()){
-            if(wa.getWeek().getIntWeek() == huidigeWeek.getIntWeek() || wa.getWeek().getIntWeek() == huidigeWeek.getIntWeek() + 1){
-                aankomendeAanbiedingen.add(wa);
+            for(int i = 1; i < size; i++){
+                if(wa.getWeek().getIntWeek() == week.getIntWeek() || wa.getWeek().getIntWeek() == week.getIntWeek() + i){
+                    aankomendeAanbiedingen.add(wa);
+                }
             }
         }
         return aankomendeAanbiedingen;
