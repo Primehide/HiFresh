@@ -25,6 +25,7 @@ public class BackOfficeController {
 
 	public BackOfficeController() {
 		weekAanbodManager = new WeekAanbodManager();
+		contractManager = new ContractManager();
 	} //TODO indien nodig
 
 
@@ -54,8 +55,8 @@ public class BackOfficeController {
 		weekAanbodManager.VoegTestWeekAanbiedingenToe(planning);
 	}
 
-	public void VoegTestContractsToe(List<Contract> planning){
-	    contractManager.fillRepo(planning);
+	public void VoegTestContractsToe(List<Contract> contracten){
+	    contractManager.fillRepo(contracten);
     }
 
 }

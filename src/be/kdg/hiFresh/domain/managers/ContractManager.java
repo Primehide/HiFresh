@@ -3,13 +3,17 @@ package be.kdg.hiFresh.domain.managers;
 import be.kdg.hiFresh.domain.leverancier.Contract;
 import be.kdg.hiFresh.domain.leverancier.ContractPeriode;
 import be.kdg.hiFresh.domain.recept.Product;
-import be.kdg.hiFresh.persistentie.ContractRepo;
+import be.kdg.hiFresh.persistentie.ContractMemoryRepo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ContractManager {
-    private ContractRepo repo;
+    private ContractMemoryRepo repo;
+
+    public ContractManager(){
+        repo = new ContractMemoryRepo();
+    }
 
     public List<ContractPeriode> getContractPeriodes(Product product){
         List<ContractPeriode> res = new ArrayList<>();
@@ -25,7 +29,7 @@ public class ContractManager {
         return res;
     }
 
-    public void fillRepo(List<Contract> periodes){
-        this.repo.setContracts(periodes);
+    public void fillRepo(List<Contract> contracten){
+        repo.setContracts(contracten);
     }
 }

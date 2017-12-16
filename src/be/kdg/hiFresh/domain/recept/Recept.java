@@ -44,7 +44,6 @@ public class Recept {
     public double berekenGemPrijs(Week week) {
         for (Ingredient i : this.ingredienten) {
             Product p = i.getProduct();
-            List<ContractPeriode> periodes =
         }
         return 0;
     }
