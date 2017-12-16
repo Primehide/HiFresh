@@ -41,15 +41,12 @@ public class Recept {
         labels.add(label);
     }
 
-    public double berekenGemPrijs(Week week) {
-        for (Ingredient i : this.ingredienten) {
-            Product p = i.getProduct();
-        }
-        return 0;
-    }
-
 
     public String getNaam() {
         return naam;
+    }
+
+    public List<Ingredient> getIngredienten() {
+        return ingredienten;
     }
 }

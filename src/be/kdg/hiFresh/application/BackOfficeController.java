@@ -39,16 +39,34 @@ public class BackOfficeController {
 		List<Sort> sorter
 	) {
 		// TODO
-        Map<Recept, Double> res = new HashMap<Recept, Double>();
+		//variabele om de gemiddelde aankoopprijs van het HUIDIGE ingredient bij te houden
+		double gemiddeldeAankoopPrijsIngredient = 0;
+		//de totaal prijs van een recept is de som van de gemiddelde prijzen van alle ingredienten die het recept bevat.
+		double totaalPrijsRecept = 0;
+		//Ons resultaat dat we teruggeven, een map met als sleutel het recept en de bijbehorende prijs)
+        Map<Recept, Double> MapPrijsPerRecept = new HashMap<Recept, Double>();
+        //Weekaanbiedingen ophalen waarvan we de prijs willen bereken
         List<WeekAanbod> weekAanbods = weekAanbodManager.getLijstWeekAanbod(new Week(jaar, week),WEEK_PAGE_SIZE);
+        //voor elk weekaanbod moeten we voor elk recept de prijs berekenen
         for (WeekAanbod w : weekAanbods){
+        	//over onze recepten loopen
             Map<Integer, Recept> recepten = w.getRecepten();
-            for (int i : recepten.keySet()){
-                Recept r = recepten.get(i);
-                r.berekenGemPrijs(new Week(jaar, week));
+            for (Map.Entry<Integer, Recept> receptEntry : recepten.entrySet()){
+            	//we willen niet met gegevens van vorige recepten/ingredienten werken dus resetten we onze variablen
+				totaalPrijsRecept = 0;
+				//voor elk ingredient in ons recept bereken we de gemiddelde aankoopprijs
+            	for(Ingredient i : receptEntry.getValue().getIngredienten()){
+					gemiddeldeAankoopPrijsIngredient = 0;
+            		//berekening gemiddelde aankoopprijs
+            		gemiddeldeAankoopPrijsIngredient = contractManager.berekenGemiddelePrijsProduct(i.getProduct(),week,jaar);
+            		//alle prijzen optellen
+            		totaalPrijsRecept =+ gemiddeldeAankoopPrijsIngredient;
+				}
+				//elk recept en linken met de berekende prijs
+				MapPrijsPerRecept.put(receptEntry.getValue(),totaalPrijsRecept);
             }
         }
-		return res; //placeholder om compileerbaar te maken
+		return MapPrijsPerRecept;
 	}
 
 	public void VoegTestWeekAanbiedingenToe(List<WeekAanbod> planning){

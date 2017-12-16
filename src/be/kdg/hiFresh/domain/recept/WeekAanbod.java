@@ -50,4 +50,8 @@ public class WeekAanbod {
 	public  Map<Integer,Recept>  getRecepten() {
 		return mapRecepten;
 	}
+
+	public void setVerkoopPrijsPerPersoon(double verkoopPrijsPerPersoon) {
+		this.verkoopPrijsPerPersoon = verkoopPrijsPerPersoon;
+	}
 }
