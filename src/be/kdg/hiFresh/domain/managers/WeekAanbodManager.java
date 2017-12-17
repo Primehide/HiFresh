@@ -18,8 +18,8 @@ public class WeekAanbodManager {
     public List<WeekAanbod> getLijstWeekAanbod(Week week, int size){
         List<WeekAanbod> aankomendeAanbiedingen = new LinkedList<WeekAanbod>();
         for (WeekAanbod wa : repo.getAlleAanbiedingen()){
-            for(int i = 1; i < size; i++){
-                if(wa.getWeek().getIntWeek() == week.getIntWeek() || wa.getWeek().getIntWeek() == week.getIntWeek() + i){
+            for(int i = 0; i < size; i++){
+                if(wa.getWeek().getIntWeek() == week.getIntWeek() + i){
                     aankomendeAanbiedingen.add(wa);
                 }
             }

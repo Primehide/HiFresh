@@ -12,6 +12,7 @@ import be.kdg.hiFresh.domain.recept.*;
 import org.threeten.extra.YearWeek;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Jan de Rijke.
@@ -47,7 +48,7 @@ public class BackOfficeController {
 		//Ons resultaat dat we teruggeven, een map met als sleutel het recept en de bijbehorende prijs)
         Map<Recept, Double> mapPrijsPerRecept = new HashMap<Recept, Double>();
         //Weekaanbiedingen ophalen waarvan we de prijs willen bereken
-        List<WeekAanbod> weekAanbods = weekAanbodManager.getLijstWeekAanbod(new Week(jaar, week),WEEK_PAGE_SIZE);
+        List<WeekAanbod> weekAanbods = weekAanbodManager.getLijstWeekAanbod(new Week(jaar, week),1);
         //voor elk weekaanbod moeten we voor elk recept de prijs berekenen
 
 		//Extra List van Recepten met filter
@@ -73,6 +74,7 @@ public class BackOfficeController {
 					lijstMetFilter.add(recepten.get(key));
 				}
 			}
+
             for (Recept recept : lijstMetFilter){
             	//we willen niet met gegevens van vorige recepten/ingredienten werken dus resetten we onze variabelen
 				totaalPrijsRecept = 0;
