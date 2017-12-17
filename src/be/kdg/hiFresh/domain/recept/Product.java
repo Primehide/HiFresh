@@ -39,4 +39,7 @@ public class Product {
 	}
 
 
+	public String getNaam() {
+		return naam;
+	}
 }
