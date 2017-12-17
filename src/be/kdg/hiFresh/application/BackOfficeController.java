@@ -2,17 +2,15 @@ package be.kdg.hiFresh.application;
 
 
 import be.kdg.foundation.operatie.Operatie;
-import be.kdg.foundation.operatie.Order;
 import be.kdg.foundation.operatie.Sort;
+import be.kdg.hiFresh.domain.Week;
 import be.kdg.hiFresh.domain.leverancier.Contract;
-import be.kdg.hiFresh.domain.leverancier.ContractPeriode;
-import be.kdg.hiFresh.domain.managers.ContractManager;
-import be.kdg.hiFresh.domain.managers.WeekAanbodManager;
+import be.kdg.hiFresh.business.ContractManager;
+import be.kdg.hiFresh.business.WeekAanbodManager;
 import be.kdg.hiFresh.domain.recept.*;
 import org.threeten.extra.YearWeek;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author Jan de Rijke.
@@ -99,7 +97,11 @@ public class BackOfficeController {
 	}
 
 	public void VoegTestContractsToe(List<Contract> contracten){
-	    contractManager.fillRepo(contracten);
+	    contractManager.vullTestDataContracten(contracten);
     }
+
+    public WeekAanbod voegReceptToe(WeekAanbod weekAanbod, Recept recept, int volgnummer){
+		return weekAanbodManager.voegReceptToe(weekAanbod,recept,volgnummer);
+	}
 
 }

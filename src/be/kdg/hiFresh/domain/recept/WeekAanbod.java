@@ -1,5 +1,6 @@
 package be.kdg.hiFresh.domain.recept;
 
+import be.kdg.hiFresh.domain.Week;
 import org.threeten.extra.YearWeek;
 
 import java.util.*;

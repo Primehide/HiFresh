@@ -1,12 +1,10 @@
-package be.kdg.hiFresh.domain.managers;
+package be.kdg.hiFresh.business;
 
 import be.kdg.hiFresh.domain.leverancier.Contract;
 import be.kdg.hiFresh.domain.leverancier.ContractPeriode;
 import be.kdg.hiFresh.domain.recept.Product;
 import be.kdg.hiFresh.persistentie.ContractMemoryRepo;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.time.temporal.WeekFields;
@@ -27,7 +25,7 @@ public class ContractManager {
 
         List<ContractPeriode> periodesVoorProduct = new LinkedList<ContractPeriode>();
 
-        for(Contract c : ContractRepo.getContracts()){
+        for(Contract c : ContractRepo.getAlleContracten()){
             for(ContractPeriode cp : c.getPeriodes()){
                 if(cp.getProduct() == product){
                     periodesVoorProduct.add(cp);
@@ -62,7 +60,7 @@ public class ContractManager {
         return gemiddelde;
     }
 
-    public void fillRepo(List<Contract> contracten){
+    public void vullTestDataContracten(List<Contract> contracten){
         ContractRepo.setContracts(contracten);
     }
 }

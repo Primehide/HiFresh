@@ -1,4 +1,4 @@
-package be.kdg.hiFresh.domain.recept;
+package be.kdg.hiFresh.domain;
 
 public class Week {
     private int year;

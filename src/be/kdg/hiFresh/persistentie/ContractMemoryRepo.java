@@ -13,7 +13,7 @@ public class ContractMemoryRepo {
         this.alleContracten = new LinkedList<Contract>(contracts);
     }
 
-    public List<Contract> getContracts() {
+    public List<Contract> getAlleContracten() {
         return alleContracten;
     }
 }

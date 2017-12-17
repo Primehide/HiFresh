@@ -1,6 +1,7 @@
-package be.kdg.hiFresh.domain.managers;
+package be.kdg.hiFresh.business;
 
-import be.kdg.hiFresh.domain.recept.Week;
+import be.kdg.hiFresh.domain.Week;
+import be.kdg.hiFresh.domain.recept.Recept;
 import be.kdg.hiFresh.domain.recept.WeekAanbod;
 import be.kdg.hiFresh.persistentie.WeekAanbodMemoryRepo;
 import org.threeten.extra.YearWeek;
@@ -29,5 +30,17 @@ public class WeekAanbodManager {
 
     public void VoegTestWeekAanbiedingenToe(List<WeekAanbod> planning){
         repo.setAlleAanbiedingen(planning);
+    }
+
+    public WeekAanbod voegReceptToe(WeekAanbod weekAanbod, Recept recept, int volgnummer){
+        WeekAanbod wa;
+        for (WeekAanbod w : repo.getAlleAanbiedingen()){
+            if(w == weekAanbod){
+                wa = w;
+                wa.voegToe(recept,volgnummer);
+                return wa;
+            }
+        }
+        return new WeekAanbod(YearWeek.now(),1);
     }
 }

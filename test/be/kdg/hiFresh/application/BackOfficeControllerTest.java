@@ -67,7 +67,7 @@ public class BackOfficeControllerTest {
                 YearWeek.from(now).getWeek(),
                 List.of(new Operatie("naam", Operator.CONTAINS, "curry")),
                 List.of(new Sort("naam", Order.DESCENDING)));
-		assertEquals(2, receptenMetAankoopprijs.size());
+		assertEquals(4, receptenMetAankoopprijs.size());
 		Iterator<Recept> recepten = receptenMetAankoopprijs.keySet().iterator();
 		Recept eerste = recepten.next();
 		Recept tweede = recepten.next();
